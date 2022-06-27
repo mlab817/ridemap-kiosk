@@ -40,7 +40,9 @@ const HomeScreen = () => {
         const newEntry = {
             originStationId: stationId,
             destinationStationId: id,
-            timestamp: new Date()
+            timestamp: (new Date()).toLocaleString('en-US', {
+                hour12: false
+            })
         }
 
         addEntry(newEntry)
