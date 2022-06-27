@@ -1,4 +1,4 @@
-package com.facedetection;
+package com.mlab817.kiosk;
 
 import android.os.Build;
 import android.os.Bundle;

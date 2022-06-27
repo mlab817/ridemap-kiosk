@@ -1,4 +1,4 @@
-package com.facedetection.newarchitecture.components;
+package com.mlab817.kiosk.newarchitecture.components;
 
 import com.facebook.jni.HybridData;
 import com.facebook.proguard.annotations.DoNotStrip;

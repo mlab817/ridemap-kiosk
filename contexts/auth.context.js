@@ -48,6 +48,8 @@ export const AuthProvider = ({ children }) => {
 
             const loginSuccessful = await deviceAuthentication(deviceId)
 
+            console.log(`loginSuccessful: `, loginSuccessful)
+
             if (loginSuccessful) {
                 setIsAuthenticated(true)
             }
