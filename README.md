@@ -1,25 +1,22 @@
-# RIDEMAP: Passenger Count through Face Detection using Smartphone Camera
+# RIDEMAP: Passenger Count through Smartphones and Tablets as Kiosk Machine
 
 ## Description
 
 This mobile app allows registered smartphones to upload data
-of passengers' faces counted through face detection. 
-
-`Note: This app does not collect data on faces of passengers, it 
-relies instead upon the faceID created when a face is detected by 
-the app's camera.`
+of passenger destination station information user inputted
+in a device set up like "kiosks".
 
 ## Requirements
 
 1. [Free Expo account](https://expo.dev/signup)
 2. Laravel for backend development
 3. React Native and Expo for mobile app development
-4. Smartphones with camera
+4. Smartphones / tablets
 
 The Laravel backend for the Ridemap already supports this app. The
-endpoint for submission of face detection is `/api/faces`. The backend
-accepts an array of `faces` with the following attributes: `face_id`,
-`station_id`, and `scanned_at`. `device_id` is extracted from a token
+endpoint for submission of data is `/api/kiosks`. The backend
+accepts an array of `passengers` with the following attributes: `originStationId`,
+`destinationStationId`, and `timestamp`. `device_id` is extracted from a token
 used to authenticate the device.
 
 ## Building the App
@@ -73,20 +70,18 @@ and [iOS](https://docs.expo.dev/versions/v45.0.0/sdk/application/#applicationget
    1. If device is not registered, display invalid device message along with the device ID. Note that the device ID is not the actual device ID but rather the ID of the device tied with the app.
    2. If device is registered, proceed
 4. Prompt user to select station where it is located
-5. Put the smartphone in the best position to start scanning faces 
-6. Start scanning
+5. Set up the device as a kiosk in front of or inside vehicles
+6. Passengers can now select their destination
 
-The app will send data for every batch of faces detected.
+The app will send data for 10 entries. Data submission can also be triggered
+manually.
 
 ## Limitations
 
-The accuracy of this app will depend on at least the following factors:
+This app offers the easiest way to collect data on passenger count. 
+However, there is no way to ensure the quality of data as anyone can press the 
+buttons on the device.
 
-1. Camera quality of the device
-2. Quality of the environment (placement of the device, lighting)
-3. Quality of targets (angle of the face, obstructions such as face masks/caps)
-
-There is also the issue of duplication since the app does not use a
-backend to analyze facial features and eliminate duplicates. So if a 
-person takes too long in the queueing line, they can be scanned more than
-once.
+The size of the device matters to fast track inputting by passengers as they
+will need to find their destination station in the screen. Providing information
+beforehand on the layout of the station buttons would help ease this process.
