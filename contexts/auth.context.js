@@ -41,11 +41,6 @@ export const AuthProvider = ({ children }) => {
 
             console.log(`deviceId from login: `, deviceId)
 
-            // TODO: Testing only
-            const createDeviceSuccess = await deviceCreate(deviceId)
-
-            console.log(`createDeviceSuccess ${createDeviceSuccess}`)
-
             const loginSuccessful = await deviceAuthentication(deviceId)
 
             console.log(`loginSuccessful: `, loginSuccessful)
