@@ -1,4 +1,4 @@
-package com.mlab817.kiosk;
+package com.mlab817.ridemapkiosk;
 
 import android.os.Build;
 import android.os.Bundle;

@@ -1,4 +1,4 @@
-package com.mlab817.kiosk.newarchitecture;
+package com.mlab817.ridemapkiosk.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -19,9 +19,9 @@ import com.facebook.react.fabric.CoreComponentsRegistry;
 import com.facebook.react.fabric.EmptyReactNativeConfig;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.mlab817.kiosk.BuildConfig;
-import com.mlab817.kiosk.newarchitecture.components.MainComponentsRegistry;
-import com.mlab817.kiosk.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import com.mlab817.ridemapkiosk.BuildConfig;
+import com.mlab817.ridemapkiosk.newarchitecture.components.MainComponentsRegistry;
+import com.mlab817.ridemapkiosk.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
 

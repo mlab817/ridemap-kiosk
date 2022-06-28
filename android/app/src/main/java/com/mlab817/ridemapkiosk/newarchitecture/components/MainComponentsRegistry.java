@@ -1,4 +1,4 @@
-package com.mlab817.kiosk.newarchitecture.components;
+package com.mlab817.ridemapkiosk.newarchitecture.components;
 
 import com.facebook.jni.HybridData;
 import com.facebook.proguard.annotations.DoNotStrip;

@@ -8,11 +8,9 @@
     <true/>
     <key>EXUpdatesLaunchWaitMs</key>
     <integer>0</integer>
-    <key>EXUpdatesReleaseChannel</key>
-    <string>default</string>
     <key>EXUpdatesSDKVersion</key>
     <string>45.0.0</string>
     <key>EXUpdatesURL</key>
-    <string>https://exp.host/@mlab817/face-detection</string>
+    <string>https://exp.host/@mlab817/ridemap-kiosk</string>
   </dict>
 </plist>

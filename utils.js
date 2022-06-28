@@ -9,7 +9,7 @@ import * as SecureStore from 'expo-secure-store';
  */
 export const api = axios.create({
     // baseURL: 'https://ridemap-php.herokuapp.com/api'
-    baseURL: 'http://192.168.254.102:8000/api'
+    baseURL: 'https://ridemap.thedeveconomist.com/api'
 })
 
 /**

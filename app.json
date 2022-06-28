@@ -1,16 +1,16 @@
 {
   "expo": {
-    "name": "face-detection",
-    "slug": "face-detection",
+    "name": "ridemap-kiosk",
+    "slug": "ridemap-kiosk",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
     ],
     "android": {
-      "package": "com.mlab817.kiosk"
+      "package": "com.mlab817.ridemapkiosk"
     },
     "ios": {
-      "bundleIdentifier": "com.mlab817.kiosk"
+      "bundleIdentifier": "com.mlab817.ridemapkiosk"
     }
   }
 }
