@@ -8,7 +8,6 @@ import * as SecureStore from 'expo-secure-store';
  * @type {AxiosInstance}
  */
 export const api = axios.create({
-    // baseURL: 'https://ridemap-php.herokuapp.com/api'
     baseURL: 'https://ridemap.thedeveconomist.com/api'
 })
 
