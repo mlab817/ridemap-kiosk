@@ -5,7 +5,7 @@
 import {createContext, useEffect, useState} from "react";
 import {Platform} from "react-native";
 import * as Application from "expo-application";
-import {deviceAuthentication, deviceCreate} from "../utils";
+import {deviceAuthentication} from "../utils";
 
 export const AuthContext = createContext({
     isAuthenticated: false,
@@ -28,6 +28,8 @@ export const AuthProvider = ({ children }) => {
                 const iosDeviceId = await Application.getIosIdForVendorAsync()
                 console.log(`ios deviceId: `, iosDeviceId)
                 setDeviceId(iosDeviceId)
+            } else if (Platform.OS === 'web') {
+                setDeviceId('Web is not supported')
             }
         }
 

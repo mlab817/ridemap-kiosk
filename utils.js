@@ -1,5 +1,7 @@
 import axios from "axios";
 import * as SecureStore from 'expo-secure-store';
+import {Platform} from "react-native";
+import Toast from "react-native-root-toast";
 
 /**
  * Create axios instance to use in all requests
@@ -15,7 +17,9 @@ export const api = axios.create({
  * Add token to request
  */
 api.interceptors.request.use(async (config) => {
-        const token = await SecureStore.getItemAsync('RIDEMAP_TOKEN')
+        const token = Platform.OS !== 'web'
+            ? await SecureStore.getItemAsync('RIDEMAP_TOKEN')
+            : localStorage.getItem('RIDEMAP_TOKEN')
 
         if (token) {
             config.headers = {
@@ -45,7 +49,12 @@ export const deviceAuthentication = async (deviceId) => {
 
         if (response.data.success) {
             // store token
-            await SecureStore.setItemAsync('RIDEMAP_TOKEN', response.data.token)
+            if (Platform.OS !== 'web') {
+                await SecureStore.setItemAsync('RIDEMAP_TOKEN', response.data.token)
+            } else {
+                localStorage.setItem('RIDEMAP_TOKEN', response.data.token)
+            }
+
         } else {
             return false
         }
@@ -88,8 +97,20 @@ export const submitPassengers = async (passengers) => {
 
         console.log(response.data)
 
+        Toast.show(response.data.data, {
+            duration: Toast.durations.SHORT,
+            position: Toast.positions.BOTTOM,
+            hideOnPress: true
+        })
+
         return response.data.success
     } catch (e) {
-        console.log(`error in submitPassengers: `,e)
+        console.log(`error in submitPassengers: `, e)
+
+        Toast.show(e.message, {
+            duration: Toast.durations.SHORT,
+            position: Toast.positions.BOTTOM,
+            hideOnPress: true
+        })
     }
 }
