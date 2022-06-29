@@ -13,35 +13,91 @@ in a device set up like "kiosks".
 3. React Native and Expo for mobile app development
 4. Smartphones / tablets
 
-The Laravel backend for the Ridemap already supports this app. The
+The [Laravel backend for the Ridemap](https://github.com/mlab817/ridemap-php) already supports this app. The
 endpoint for submission of data is `/api/kiosks`. The backend
 accepts an array of `passengers` with the following attributes: `originStationId`,
 `destinationStationId`, and `timestamp`. `device_id` is extracted from a token
 used to authenticate the device.
 
-## Building the App
+## Getting Started
 
-Since this app has been created with [expo](expo.dev),
-the app can also be built with it through the
-[Expo Application Services](https://docs.expo.dev/eas/).
-To do this make sure that `eas-cli` is installed in your
-computer with `npm i -g eas-cli`. Then, in your app's root
-directory, just run `eas build` and follow the instruction.
-You can view the progress in [expo.dev](https://expo.dev/) 
-website, i.e. dashboard. Afterwards, you can download the 
-app bundle which you can distribute to users or submit to
-app / play store.
+Install the necessary tools:
 
-__Important__: Do not forget to update the api configuration in the
-`utils.js` file to point to the url of the API of the backend. Specifically,
-this line:
+1. Any IDE (Webstorm is preferred but you can also use Atom and VS Code)
+2. Install Nodejs
+3. Install Expo
+4. Install Expo Go in IOS/Android
+5. Install Git
 
+Follow the following steps to get set up:
+
+1. Clone this repository
+
+```console
+git clone https://github.com/mlab817/ridemap-counter.git
 ```
+
+2. Change directory to ridemap-counter
+
+```console
+cd ridemap-counter
+```
+
+3. Install dependencies
+
+
+```console
+npm install
+```
+
+4. Update the API endpoint in utils.js file
+
+```javascript
 export const api = axios.create({
    baseURL: 'https://ridemap-php.herokuapp.com/api'
 })
 ```
 
+5. Start expo dev server
+
+
+```console
+expo start
+```
+
+Or
+
+```console
+expo r -c
+```
+
+The second command is used when you cannot connect your device to the webserver. 
+
+Follow the instructions in the CLI message to connect your simulator or physical device.
+
+## Building and Distributing the App
+
+To build the app, install the Expo Application Services.
+
+1. Create a free account in [Expo](https://expo.dev).
+2. Install eas-cli to use eas in command prompt and/or terminal.
+
+```console
+npm i -g eas-cli
+```
+
+3. From the root directory, run:
+
+```console
+eas build
+```
+
+Follow the on-screen instructions. You will find the android/ios bundles in your Expo account under Build menu, e.g. https://expo.dev/accounts/{accountName}/projects/ridemap-counter/builds. You may also integrate submission to Play Store
+and App Store.
+
+> Note: Unfortunately, to build IOS applications, you will need to apply and register to Apple Developer Program which 
+> costs $99 yearly. Android build is free and can be downloaded for distribution.
+ 
 ## Workflow
 
 ### Device Authentication
@@ -54,10 +110,9 @@ this, follow the instructions below:
 3. The app will show an invalid device message along with the device ID.
 Use this device ID to register the device in the server.
 
-`
-Note: The device ID does not refer to the actual device ID of the
+> Note: The device ID does not refer to the actual device ID of the
 device but rather the device ID of the app tied to the server. This
-is unique for every app that is installed in the device.`
+is unique for every app that is installed in the device.
 
 Read more here: [Android](https://docs.expo.dev/versions/v45.0.0/sdk/application/#applicationandroidid)
 and [iOS](https://docs.expo.dev/versions/v45.0.0/sdk/application/#applicationgetiosidforvendorasync)
@@ -117,6 +172,20 @@ Stores data on scanned QR codes
 | user_id   | int       | Foreign key referencing users table    |
 | created_at| timestamp | Timestamp when the record was saved in the database    |
 | updated_at| timestamp | Timestamp when the record was updated in the database  |
+
+## Screenshots
+
+
+| ![Splash Screen](https://user-images.githubusercontent.com/29625844/176331478-e042c273-ffab-4603-ad00-693382aa546d.png) | ![Device ID](https://user-images.githubusercontent.com/29625844/176331526-db90c6f2-a3cc-48e8-8fe2-ad5bf46f146f.png) |
+|:-------------:|:------------:|
+| ![Select Station](https://user-images.githubusercontent.com/29625844/176332218-291c28f1-666c-4fdf-88b6-259fd7178f55.png) | ![Kiosk](https://user-images.githubusercontent.com/29625844/176335692-cd4d60aa-5aa3-4804-81bd-cb1db4a9f2c6.png) |
+
+1. Screen 1 - Splash screen
+2. Screen 2 - QR Code for the Device ID which can be scanned to easily copy the device ID
+3. Screen 3 - Select station where device is located
+4. Screen 4 - Passenger selects destination station
+
+> The app submits data every 10 inputs or can be triggered manually.
 
 ## Limitations
 
